@@ -59,7 +59,7 @@ services:
     ports:
       - 8081:8081
     depends_on:
-      ms_mongo_db:
+      mongodb:
         condition: service_healthy
     networks:
       - microservices-net
@@ -73,6 +73,32 @@ services:
       - 1025:1025 # SMTP server
     networks:
       - microservices-net
+
+  config-server:
+    container_name: config-server
+    image: config-server
+    ports:
+      - 8888:8888
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+  customer:
+    container_name: customer
+    image: customer
+    networks:
+      - microservices-net
+    restart: unless-stopped
+
+  discovery:
+    container_name: discovery
+    image: discovery
+    networks:
+      - microservices-net
+    restart: unless-stopped
 
 networks:
   microservices-net:
