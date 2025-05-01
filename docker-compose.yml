@@ -77,8 +77,11 @@ services:
   config-server:
     container_name: config-server
     image: config-server
+    build:
+      context: ./services/config-server #Path to directory of config-server service
+      dockerfile: Dockerfile
     ports:
-      - 8888:8888
+      - 8889:8888
     depends_on:
       mongodb:
         condition: service_healthy
@@ -88,6 +91,9 @@ services:
 
   customer:
     container_name: customer
+    build:
+      context: ./services/customer  # Path to directory of customer service
+      dockerfile: Dockerfile
     image: customer
     networks:
       - microservices-net
@@ -96,6 +102,9 @@ services:
   discovery:
     container_name: discovery
     image: discovery
+    build:
+      context: ./services/discovery  #Path to directory of discovery service
+      dockerfile: Dockerfile
     networks:
       - microservices-net
     restart: unless-stopped
