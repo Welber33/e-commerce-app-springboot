@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: product-service
+  banner:
+    location: classpath:banner.txt
+  config:
+    import: optional:configserver:http://localhost:8888
