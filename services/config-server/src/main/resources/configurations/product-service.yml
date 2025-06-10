@@ -17,5 +17,6 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     repair-before-migration: true
+    locations: classpath:db/migration/
 server:
   port: 8050
