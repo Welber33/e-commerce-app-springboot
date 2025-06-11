@@ -1,15 +1,17 @@
-package com.ecommerce.customer.handlerException;
+package com.ecommerce.product.handlerException;
 
-import com.ecommerce.product.exception.ProductPurchaseException;
+import java.util.HashMap;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashMap;
+import com.ecommerce.product.exception.ProductPurchaseException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @RestControllerAdvice
 public class GlobalException {
