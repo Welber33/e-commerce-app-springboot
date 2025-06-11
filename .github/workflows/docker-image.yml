@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Config Server Docker image
-      run: docker build . --file services/config-server/Dockerfile --tag config-server:$(date +%s)
+      run: cd services/config-server && docker build . --tag config-server:$(date +%s)
     - name: Build the Product Docker image
-      run: docker build . --file services/product/Dockerfile --tag product:$(date +%s)
+      run: cd services/product && docker build . --tag product:$(date +%s)
     - name: Build the Customer Docker image
-      run: docker build . --file services/customer/Dockerfile --tag customer:$(date +%s)
+      run: cd services/customer && docker build . --tag customer:$(date +%s)
     - name: Build the Discovery Docker image
-      run: docker build . --file services/discovery/Dockerfile --tag discovery:$(date +%s)
+      run: cd services/discovery && docker build . --tag discovery:$(date +%s)
