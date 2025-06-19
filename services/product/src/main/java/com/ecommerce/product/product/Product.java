@@ -21,6 +21,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@Builder
 public class Product {
 
     @Id

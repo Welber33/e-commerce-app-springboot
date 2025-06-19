@@ -15,9 +15,9 @@ public class ProductMapper {
                 .price(request.price())
                 .availableQuantity(request.availableQuantity())
                 .category(
-                    Category.builder()
-                    .id(request.categoryId())
-                    .build())
+                        Category.builder()
+                                .id(request.categoryId())
+                                .build())
                 .build();
     }
 
@@ -30,8 +30,7 @@ public class ProductMapper {
                 product.getAvailableQuantity(),
                 product.getCategory().getId(),
                 product.getCategory().getName(),
-                product.getCategory().getDescription()
-        );
+                product.getCategory().getDescription());
     }
 
     public ProductPurchaseResponse toProductPurchaseResponse(Product product, Integer quantity) {
@@ -40,7 +39,11 @@ public class ProductMapper {
                 product.getName(),
                 product.getDescription(),
                 product.getPrice(),
+<<<<<<< HEAD
                 quantity
         );
+=======
+                quantity);
+>>>>>>> c578cec7149d0b70e27147b91bac50a04f5daff7
     }
 }

@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Config Server Docker image
+      run: cd services/config-server && docker build . --tag config-server:$(date +%s)
+    - name: Build the Product Docker image
+      run: cd services/product && docker build . --tag product:$(date +%s)
+    - name: Build the Customer Docker image
+      run: cd services/customer && docker build . --tag customer:$(date +%s)
+    - name: Build the Discovery Docker image
+      run: cd services/discovery && docker build . --tag discovery:$(date +%s)

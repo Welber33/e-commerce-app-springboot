@@ -1,5 +1,16 @@
 package com.ecommerce.product.category;
 
+<<<<<<< HEAD
+=======
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import com.ecommerce.product.product.Product;
+
+>>>>>>> c578cec7149d0b70e27147b91bac50a04f5daff7
 import java.util.List;
 
 import com.ecommerce.product.product.Product;
@@ -21,6 +32,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
+@Builder
 public class Category {
 
     @Id

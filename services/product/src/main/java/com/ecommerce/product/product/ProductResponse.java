@@ -1,14 +1,14 @@
 package com.ecommerce.product.product;
 
-public record ProductResponse(
-        Integer id,
-        String name,
-        String description,
-        Double price,
-        Integer availableQuantity,
-        Integer categoryId,
-        String categoryName,
-        String categoryDescription
-) {
+import java.math.BigDecimal;
 
+public record ProductResponse(
+                Integer id,
+                String name,
+                String description,
+                BigDecimal price,
+                Double availableQuantity,
+                Integer categoryId,
+                String categoryName,
+                String categoryDescription) {
 }
