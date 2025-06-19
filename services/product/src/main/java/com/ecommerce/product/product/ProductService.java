@@ -1,17 +1,26 @@
 package com.ecommerce.product.product;
 
+import java.util.ArrayList;
+
 import com.ecommerce.product.product.ProductMapper;
 import com.ecommerce.product.product.ProductRepository;
 import com.ecommerce.product.product.ProductRequest;
 import com.ecommerce.product.product.ProductPurchaseRequest;
 import com.ecommerce.product.product.ProductPurchaseResponse;
 import com.ecommerce.product.product.ProductResponse;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Collectors;
+
 import com.ecommerce.product.exception.ProductPurchaseException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor   
@@ -40,14 +49,14 @@ public class ProductService {
                 .sorted(Comparator.comparing(ProductPurchaseRequest::productId))
                 .toList();
 
-        List<ProductPurchaseResponse> purchasedProducts = new ArrayList<ProductPurchaseResponse>();
+        List<ProductPurchaseResponse> purchasedProducts = new ArrayList<>();
 
         for (int i = 0; i < storedProducts.size(); i++) {
             var product = storedProducts.get(i);
             var productRequest = storedRequest.get(i);
 
             if (product.getAvailableQuantity() < productRequest.quantity()) {
-                throw new ProductPurchaseException("Product with ID: " + productRequest.getId() + " does not have enough quantity");
+                throw new ProductPurchaseException("Product with ID: " + productRequest.productId() + " does not have enough quantity");
             }
 
             var newAvailableQuantity = product.getAvailableQuantity() - productRequest.quantity();

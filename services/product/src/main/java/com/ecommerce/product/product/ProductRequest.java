@@ -1,10 +1,11 @@
 package com.ecommerce.product.product;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 public record ProductRequest(
     Integer id,
@@ -18,7 +19,7 @@ public record ProductRequest(
     String description,
 
     @PositiveOrZero(message = "Available quantity must be zero or positive")
-    double availableQuantity,
+    Integer availableQuantity,
 
     @Positive(message = "Price must be positive")
     @NotNull(message = "Price cannot be null")

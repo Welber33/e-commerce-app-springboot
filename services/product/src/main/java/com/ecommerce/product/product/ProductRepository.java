@@ -1,9 +1,10 @@
 package com.ecommerce.product.product;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
-    Object findAllByIdInOrderById(List<Integer> productIds);
+    List<Product> findAllByIdInOrderById(List<Integer> productIds);
 }

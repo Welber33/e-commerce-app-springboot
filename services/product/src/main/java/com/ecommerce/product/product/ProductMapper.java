@@ -1,14 +1,13 @@
 package com.ecommerce.product.product;
 
 import org.springframework.stereotype.Service;
+
 import com.ecommerce.product.category.Category;
-import com.ecommerce.product.product.ProductRequest;
-import com.ecommerce.product.product.Product;
 
 @Service
 public class ProductMapper {
 
-    public Object toProduct(ProductRequest request) {
+    public Product toProduct(ProductRequest request) {
         return Product.builder()
                 .id(request.id())
                 .name(request.name())
@@ -27,7 +26,7 @@ public class ProductMapper {
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
-                product.getPrice(),
+                product.getPrice().doubleValue(),
                 product.getAvailableQuantity(),
                 product.getCategory().getId(),
                 product.getCategory().getName(),
@@ -35,13 +34,13 @@ public class ProductMapper {
         );
     }
 
-    public ProductPurchaseResponse toProductPurchaseResponse(Product product, double quantity) {
+    public ProductPurchaseResponse toProductPurchaseResponse(Product product, Integer quantity) {
         return new ProductPurchaseResponse(
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
                 product.getPrice(),
-                quantity,
+                quantity
         );
     }
 }
